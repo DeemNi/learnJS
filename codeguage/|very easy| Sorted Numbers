@@ -1,0 +1,9 @@
+let firstNumber = prompt("Enter first number", "0");
+
+let secondNumber = prompt("Enter second number", "0");
+
+let thirdNumber = prompt("Enter third number", "0");
+
+let sortedArray = [firstNumber, secondNumber, thirdNumber].sort(function(a, b){ return a - b});
+
+alert(sortedArray);
