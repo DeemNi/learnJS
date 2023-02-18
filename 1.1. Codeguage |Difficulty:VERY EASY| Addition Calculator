@@ -1,0 +1,5 @@
+let a = prompt("Enter number a - ?", "0");
+
+let b = prompt("Enter number b - ?", "0");
+
+alert(+a + +b);
