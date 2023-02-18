@@ -1,0 +1,11 @@
+let a = 5;
+let b = 7;
+
+let buffer;
+
+buffer = a;
+
+a = b;
+b = buffer;
+
+alert("Changed a - " + a +   "\nChanged b - " + b);
