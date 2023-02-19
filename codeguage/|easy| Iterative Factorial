@@ -1,0 +1,12 @@
+function factorial(numb){
+    if(numb == 0 || typeof numb !== 'number'){
+        return null;
+    }
+
+    let result = numb;
+
+    for(let i = 1; i < numb; i++){
+        result *= numb - i;
+    }
+    return result;
+}
