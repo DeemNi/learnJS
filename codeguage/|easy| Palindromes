@@ -1,0 +1,17 @@
+// free solution
+function isPalingdrome(check){
+    if(check == check.toString().split('').reverse().join('')){
+        return true;
+    } else return false;
+}
+
+//harder solution
+function isPalingdrome(check){
+    for(let i = 0; i < check.length / 2; i++){
+        if(check[i] == check[check.length - i - 1]){
+            continue;
+        }
+    else return false;
+    }
+    return true;
+}
