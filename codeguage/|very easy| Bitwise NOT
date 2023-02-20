@@ -1,0 +1,14 @@
+function not(str){
+    if(str.length == 0){
+        return str;
+    }
+    let answer = '';
+    for(let i = 0; i < str.length; i++){
+        if(str.split('')[i] == '0'){
+            answer += '1';
+        }else if(str.split('')[i] == '1'){
+            answer += '0';
+        } else return 'Undefined value. Only 1 or 2';
+    }
+    return answer;
+}
