@@ -1,0 +1,56 @@
+//BAD SOLUTION
+//--------------------------------------------------------------------------
+function betterPrecision(num, precision) {
+    let expCheck = num.toExponential();
+    let result = '';
+
+    if(expCheck[expCheck.length-1] < 5){
+        
+        for(let i = 0; i < precision; i++){
+            if(typeof num.toString()[i] !== "undefined"){
+                result += num.toString()[i];
+            }
+        }
+        while(result.length < num.toString().length){
+            result += '0';
+        }
+
+        let bufferString = result.split("");
+        
+
+        let answerBuff = '';
+
+
+
+
+        if(num.toString()[precision] >= 5){
+            bufferString[precision-2] =  +bufferString[precision-1] + 1;
+            
+        }
+        bufferString.join("");
+
+        for(let i = 0; i < bufferString.length; i++){
+            answerBuff += bufferString[i];
+        }
+
+        return answerBuff;
+
+    }else return num.toExponential();
+ }
+
+ alert(betterPrecision(158, 2));
+ //--------------------------------------------------------------------------
+ 
+ function betterPrecision(num, precision) {
+    var stringifiedNum = num.toPrecision(precision);
+    var index = stringifiedNum.indexOf('e');
+ 
+    if (index !== -1) {
+       var exp = Number(stringifiedNum.slice(index + 1));
+       if (exp < 5) {
+  return Number(stringifiedNum).toString();
+       }
+    }
+ 
+    return stringifiedNum;
+ }
