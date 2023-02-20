@@ -1,0 +1,23 @@
+//using array.sort()
+
+function minArraySort(arr) {
+    if(isFinite(arr) !== false){
+        return false;
+    }
+
+    arr.sort((a,b) => {return a - b});
+
+    return arr[0];
+ }
+
+ //using min variable
+
+ function minVariableArray(arr){
+    let min = arr[0];
+    for(let i = 0; i < arr.length; i++){
+        if(min > arr[i]){
+            min = arr[i];
+        }
+    }
+    return min;
+ }
