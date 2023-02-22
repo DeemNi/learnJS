@@ -1,0 +1,12 @@
+function hyphenatedWords(){
+    while(true){
+        let word = prompt("Enter word with hyphenate", "");
+        if(word.match(/\-/)){
+            document.write(word.slice(0,word.indexOf("-")));
+            document.write('<br \/>');
+            document.write(word.slice(word.indexOf("-")+1));
+            break;
+        } else alert("invalid output");
+    }
+
+}
