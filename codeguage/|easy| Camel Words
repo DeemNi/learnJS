@@ -1,0 +1,15 @@
+function getWords(str){
+    let result = [];
+    let index = 0;
+
+    for(let i = 0; i < str.length; i++){
+       if(String.fromCharCode(65) <= str[i] && str[i] <= String.fromCharCode(90)  && 
+       (String.fromCharCode(97) <= str[i - 1] && str[i - 1] <= String.fromCharCode(122) || 
+       String.fromCharCode(97) <= str[i + 1] && str[i + 1] <= String.fromCharCode(122)) )
+      {
+            result.push(str.slice(index,i));
+            index = i;
+        }
+    }
+    return result;
+}
