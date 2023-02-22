@@ -1,0 +1,14 @@
+function endsWithPolyfill(str, substr, length) {
+    if(str.length > length){
+        let cutWord = '';
+        for(let i = 0; i < length; i++){
+            cutWord += str.split('')[i];
+        }
+        if(cutWord.slice(-(substr.length)) == substr){
+            alert(true);
+        } else alert(false);
+    }else if(str.slice(-(substr.length)) == substr){
+        alert(true);
+    } else alert(false);
+
+}
