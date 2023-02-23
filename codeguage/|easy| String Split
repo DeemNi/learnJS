@@ -1,0 +1,14 @@
+function stringSplit(str, substr){
+    let result = [];
+    let index = 0;
+
+    for(let i = 0; i < str.length; i++){
+        if(str[i]===substr){
+            result.push(str.slice(index,i));
+            index = i+1;
+
+        }else continue;
+    }
+    result.push(str.slice(index));
+    return result;
+}
