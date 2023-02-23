@@ -1,0 +1,15 @@
+function test(){
+    let rating = prompt("Enter your rate 0 - 100", 0);
+
+    if(rating >= 90 && rating <= 100){
+        return "Rating A";
+    }else if(rating >= 75 && rating <= 89){
+        return "Rating B";
+    }else if(rating >= 60 && rating <= 74){
+        return "Rating C";
+    }else if(rating >= 50 && rating <= 59){
+        return "Rating D";
+    }else if(rating >= 40 && rating <= 49){
+        return "Rating E";
+    }else return "Did not pass the exam";
+}
