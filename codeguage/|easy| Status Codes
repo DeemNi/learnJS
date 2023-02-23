@@ -1,0 +1,30 @@
+function checkStatusCode(){
+    
+    const checkDigit = /[1-5]/g;
+    const checkWord = /\D+/g;
+    
+    let code = prompt("Enter code status", 0);
+
+    if(code.length != 3){
+        return "Invalid code length.";
+    }else if(code.match(checkWord)){
+        return "Each character must be a digit.";
+    }else if(!code[0].match(checkDigit)){
+        return "First digit not in range 1-5.";
+    }else{
+
+    switch(code[0]){
+        case '1':
+            return "Informational";
+        case '2':
+            return "Successful";
+        case '3':
+            return "Redirection";
+        case '4':
+            return "Client Error";
+        case '5':
+            return "Server Error";
+        }
+    }
+
+}
