@@ -1,0 +1,17 @@
+function gcd(num_1, num_2){
+    if(num_1 == 0 && num_2 == 0){
+        return Infinity;
+    }
+    let max = (num_1 > num_2) ? num_1 : num_2;
+
+    let result = 0;
+
+    for(let i = 1; i <= max; i++){
+        if(Number.isInteger(num_1 / i) && Number.isInteger(num_2 / i)){
+            result = i;
+        }
+    }
+
+    return result;
+
+}
