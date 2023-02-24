@@ -1,0 +1,20 @@
+function collatzLength(numb){
+
+    if(typeof numb !== 'number' || numb == Infinity || !Number.isInteger(numb) || numb < 1){
+        return null;
+    }
+
+    let length = 1;
+    while (numb !== 1){
+        if(numb % 2 == 0){
+            numb = numb / 2;
+            length++;
+        }else{
+            numb = numb * 3 + 1;
+            length++;
+        }
+    }
+
+    return length;
+
+}
