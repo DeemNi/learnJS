@@ -1,0 +1,17 @@
+function selectionSort(arr){
+    let buffer = 0;
+    let minIndex;
+
+    for(let i = 0, n = arr.length; i < n; i++){
+        minIndex = i;
+        for(let j = i; j < n; j++){
+            if(arr[minIndex] > arr[j]){
+                minIndex = j;
+                buffer = arr[minIndex];
+                arr[minIndex] = arr[i];
+                arr[i] = buffer;
+            }
+        }
+    }
+
+}
