@@ -10,6 +10,7 @@ function getWords(str){
             result.push(str.slice(index,i));
             index = i;
         }
+        result.push(str.slice(index));
     }
     return result;
 }
