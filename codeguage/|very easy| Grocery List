@@ -1,0 +1,16 @@
+var items = [
+    'Oranges',
+    'Oregano',
+    'Mozzarella cheese',
+    'Milk',
+    'Detergent powder'
+ ];
+
+ function createLi(arr){
+    let myList = document.getElementById("myList");
+    arr.map(x=> {
+        let listItem = document.createElement("li");
+        listItem.innerText = x;
+        myList.appendChild(listItem);
+    });
+ }
