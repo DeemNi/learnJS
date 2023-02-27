@@ -1,0 +1,22 @@
+function _binarySearch(val, arr){
+
+  arr.sort(function(a, b) { return a - b; });
+
+  let start = 0;
+  let end = arr.length - 1;
+  let result = null;
+
+  while(start <= end){
+    let middle = Math.floor((start+end)/2);
+
+    if(arr[middle] == val){
+      result = middle;
+      break;
+    }else if(arr[middle] < val){
+      start = middle + 1;
+    }else{
+      end = middle - 1;
+    }
+  }
+  return result;
+}
