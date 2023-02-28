@@ -1,0 +1,5 @@
+function getDistanceCalculator(a){
+  return function(b){
+    return (((a[0] - b[0])**2 + (a[1]-b[1]) ** 2) ** 0.5).toFixed(1);
+  }
+}
