@@ -1,0 +1,9 @@
+function gcd(a, b) {
+  var r = a % b;
+  if (r === 0) {
+     return b;
+  }
+  else {
+     return gcd(b, r);
+  }
+}
