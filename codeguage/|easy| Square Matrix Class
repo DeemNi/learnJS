@@ -1,0 +1,45 @@
+function SquareMatrix(matrixArray) {
+
+   // If matrixArray is a number,
+   // Create an n x n matrix
+   if (typeof matrixArray === 'number') {
+      var n = matrixArray;
+      matrixArray = [];
+
+      for (var i = 0; i < n; i++) {
+         matrixArray.push([]);
+         for (var j = 0; j < n; j++) {
+            matrixArray[i].push(0); 
+         }
+      }
+      
+   }
+
+   this.array = matrixArray;
+   this.n = matrixArray.length;
+
+}
+
+SquareMatrix.prototype.add = function(squareMatrixInstance){
+   alert('add');
+}
+
+SquareMatrix.prototype.multiply = function(squareMatrixInstance){
+   alert('mult');
+}
+
+SquareMatrix.prototype.copy = function(){
+   alert('cop');
+}
+
+SquareMatrix.prototype.fill = function(value){
+   alert('fill');
+}
+
+SquareMatrix.prototype.rotateBy90 = function(){
+   alert('rotate');
+}
+
+SquareMatrix.prototype.transpose = function(){
+   alert('transpose');
+}
