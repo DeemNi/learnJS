@@ -1,45 +1,103 @@
 function SquareMatrix(matrixArray) {
 
-   // If matrixArray is a number,
-   // Create an n x n matrix
-   if (typeof matrixArray === 'number') {
-      var n = matrixArray;
-      matrixArray = [];
-
-      for (var i = 0; i < n; i++) {
-         matrixArray.push([]);
-         for (var j = 0; j < n; j++) {
-            matrixArray[i].push(0); 
-         }
-      }
-      
-   }
-
    this.array = matrixArray;
    this.n = matrixArray.length;
 
 }
 
 SquareMatrix.prototype.add = function(squareMatrixInstance){
-   alert('add');
+
+   const n = this.n;
+   const matrixArray = this.array;
+   let result = [];
+
+   for(let i = 0; i < n; i++){
+      let row = [];
+      for(let j = 0; j < matrixArray[i].length; j++){
+         row.push(matrixArray[i][j] + squareMatrixInstance[i][j]);
+      }
+      result.push(row);
+   }
+   return result;
 }
 
-SquareMatrix.prototype.multiply = function(squareMatrixInstance){
-   alert('mult');
+SquareMatrix.prototype.multiply = function(squareMatrixInstance){ // dont work
+
+   const n = this.n;
+   const matrixArray = this.array;
+   const secondMatrixArray = squareMatrixInstance;
+
+   let productMatrix = new SquareMatrix(n);
+   let productMatrixArray = productMatrix.array;
+
+   let result = 0;
+
+   for(let i = 0; i < n; i++){
+      for(let j = 0; j < n; j++){
+         result = 0;
+         for(let k = 0; k < n; k++){
+            result += secondMatrixArray[k][j];
+         }
+      }
+   }
+
+   // alert(squareMatrixInstance);
+
 }
 
 SquareMatrix.prototype.copy = function(){
-   alert('cop');
+
+   const n = this.n;
+   const matrixArray = this.array;
+
+   let copy = [];
+
+   for(let i = 0; i < n; i++){
+      let row = [];
+      for(let j = 0; j < matrixArray[i].length; j++){
+         row.push(matrixArray[i][j]);
+      }
+      copy.push(row);
+   }
+   return copy;
 }
 
 SquareMatrix.prototype.fill = function(value){
-   alert('fill');
+
+   const matrixArray = this.array;
+   const n = this.n;
+
+   for(let i = 0; i < n; i++){
+      for(let j = 0; j < matrixArray[i].length; j++){
+         matrixArray[i][j] = value;
+      }
+   }
+
 }
 
 SquareMatrix.prototype.rotateBy90 = function(){
-   alert('rotate');
+
+   const matrixArray = this.array;
+   const n = this.n;
+
+   let copied = this.copy(this.array);
+
+   for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+         matrixArray[i][j] = copied[n - j - 1][i];
+      }
+   }
 }
 
 SquareMatrix.prototype.transpose = function(){
-   alert('transpose');
+   const matrixArray = this.array;
+   const n = this.n;
+
+   for (var i = 0; i < n - 1; i++) {
+      for (var j = i + 1; j < n; j++) {
+         temp = matrixArray[i][j];
+         matrixArray[i][j] = matrixArray[j][i];
+         matrixArray[j][i] = temp;
+      }
+   }
 }
