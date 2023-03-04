@@ -1,0 +1,36 @@
+Object.defineProperty(Node.prototype, 'textContent', {
+   get: function() {
+      let thisNode = this.nodeType;
+
+      if(thisNode === Node.TEXT_NODE || thisNode === Node.COMMENT_NODE){
+         return this.nodeValue;
+      }else if(thisNode === Node.DOCUMENT_NODE){
+         return null;
+      }else if(thisNode === Node.ELEMENT_NODE){
+         let concatenatedElements = '';
+         let childs = this.childNodes;
+
+         for(let i = 0; i < childs.length; i++){
+            if(childs[i].nodeType !== Node.COMMENT_NODE){
+               concatenatedElements += childs[i].textContent;
+            }
+         }
+         return concatenatedElements;
+      }
+
+   },
+   set: function(value) {
+      let thisNode = this.nodeType;
+
+      if(thisNode === node.COMMENT_NODE || thisNode === node.TEXT_NODE){
+         this.nodeValue = value;
+      }else if(thisNode === node.ELEMENT_NODE){
+         while(this.firstchild){
+            this.removeChild(this.firstchild)
+         }
+         if(value !== ''){
+            this.appendChild(document.createTextNode(value));
+         }
+      }
+   }
+});
