@@ -1,0 +1,4 @@
+Node.prototype.replaceChild = function(newNode, previousNode) {
+   this.insertBefore(newNode, previousNode);
+   this.removeChild(previousNode);
+}
