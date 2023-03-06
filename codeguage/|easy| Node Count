@@ -1,0 +1,12 @@
+Node.prototype.getNodeCount = function() {
+   if(this.childNodes.length !== 0){
+      let counter = 0;
+
+      for(let i = 0; i < this.childNodes.length; i++){
+         counter += this.childNodes[i].getNodeCount();
+      }
+      return counter;
+   }
+   return 1;
+}
+
