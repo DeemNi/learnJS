@@ -1,0 +1,16 @@
+Element.prototype.insertAdjacentElement = function (position, Element){
+
+   let thisNode = this;
+   if(position === 'beforebegin'){
+      return thisNode;
+   }else if(position === 'afterbegin'){
+      return 'afterbegin';
+   }else if(position === 'beforeend'){
+      return 'beforeend';
+   }else if(position === 'afterend'){
+      return 'afterend';
+   } else return 'error';
+}
+
+let main = document.getElementById('main');
+
