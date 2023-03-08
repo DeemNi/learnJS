@@ -2,15 +2,15 @@ Element.prototype.insertAdjacentElement = function (position, Element){
 
    let thisNode = this;
    if(position === 'beforebegin'){
-      return thisNode;
+      if(thisNode.previousElementSibling !== null){
+         thisNode.previousElementSibling.append(Element);
+      } else thisNode.before(Element);
+      
    }else if(position === 'afterbegin'){
-      return 'afterbegin';
+      thisNode.children[0].before(Element);
    }else if(position === 'beforeend'){
-      return 'beforeend';
+      thisNode.append(Element);
    }else if(position === 'afterend'){
-      return 'afterend';
+      thisNode.after(Element);
    } else return 'error';
 }
-
-let main = document.getElementById('main');
-
