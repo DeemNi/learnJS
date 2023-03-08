@@ -1,0 +1,11 @@
+Object.defineProperty(Element.prototype, 'firstElementChild', {
+   get: function (){
+      if(this.children.length !== 0){
+         for(let i = 0; i < this.childNodes.length; i++){
+            if(this.childNodes[i].nodeType !== Node.TEXT_NODE && this.childNodes[i].nodeType !== Node.COMMENT_NODE){
+               return this.childNodes[i];
+            }else continue;        
+         }
+      } else return "no child in node";
+   }
+});
