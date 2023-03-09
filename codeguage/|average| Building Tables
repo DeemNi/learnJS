@@ -1,0 +1,60 @@
+// Function for creation table using InnerHTML, exclude DOM mutation, like append, insert before, etc.
+function createTableUsingInnerHTML(tableArray, nodePosition){
+
+   let tableHeader = "<table><tr>";
+      for(let names in tableArray[0]){
+         let replacer = names.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+         tableHeader += `<th>${replacer.charAt(0).toUpperCase() + replacer.slice(1)}</th>`;
+      }
+      tableHeader += "</tr>";
+
+      let tableBody = "<tr>";
+
+      for(let i = 0; i < tableArray.length; i++){
+         for(let values in tableArray[i]){
+            tableBody+=`<td>${tableArray[i][values]}</td>`
+         }
+         tableBody += "</tr>";
+      }
+
+      tableHeader += tableBody;
+
+      console.log(tableBody);
+
+      nodePosition.innerHTML = tableHeader;
+}
+let tableContainer = document.getElementById('table-container');
+
+// Function for creation table using DOM mutation, like InnerHTML etc.
+function createTableUsingDOMMutation(tableArray, nodePosition){
+   let tableNode = document.createElement("table");
+
+   let tableRow = document.createElement("tr");
+
+   for(let names in tableArray[0]){
+      let replacer = names.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+
+      let tableThr = document.createElement("th");
+
+      tableThr.appendChild(document.createTextNode(replacer.charAt(0).toUpperCase() + replacer.slice(1)));
+
+      tableRow.appendChild(tableThr);
+   }
+   tableNode.appendChild(tableRow);
+
+   for(let i = 0; i < tableArray.length; i++){
+      let tableRowElement = document.createElement("tr");
+      for(let values in tableArray[i]){
+
+         let tableHdr = document.createElement("td");
+         tableHdr.appendChild(document.createTextNode(tableArray[i][values]));
+         tableRowElement.appendChild(tableHdr);
+      }
+      tableNode.appendChild(tableRowElement);
+   }
+
+   
+
+nodePosition.appendChild(tableNode);
+
+}
