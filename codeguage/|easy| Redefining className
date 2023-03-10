@@ -1,0 +1,9 @@
+Object.defineProperty(Element.prototype, "className", {
+   get: function(){
+      return this.attributes.class.value; //return this.getAttribute("class")
+   },
+   set: function(value){
+      this.setAttribute("class", value);
+   }
+});
+
