@@ -1,0 +1,24 @@
+Element.prototype.getInnerHTML = function(){
+   let innerHTML = '';
+
+   for(let i = 0; i < this.childNodes.length; i++){
+      if(this.childNodes[i].nodeType == Node.TEXT_NODE){
+         innerHTML += this.childNodes[i].textContent;
+      }else if(this.childNodes[i].nodeType == Node.COMMENT_NODE){
+         innerHTML += `<!--${this.childNodes[i].textContent}-->`;
+      }else{
+         
+         var attributesArray = Array.prototype.slice.call(this.childNodes[i].attributes);
+
+         var attributesStr = attributesArray.map(function(attribute) {
+            return attribute.name + '="' + attribute.value + '"';
+         }).join(' ');
+         
+
+         innerHTML += `<${this.childNodes[i].nodeName.toLowerCase()}${attributesStr}>${this.childNodes[i].textContent}</${this.childNodes[i].nodeName.toLowerCase()}>`;
+      }
+      
+   }
+
+   return innerHTML;
+};
