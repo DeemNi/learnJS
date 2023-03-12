@@ -1,0 +1,12 @@
+function fillList(){ 
+   let elementSelector = document.querySelectorAll('ol, ul');
+
+   for(let i = 0; i < elementSelector.length; i++){
+      if(typeof elementSelector[i].dataset.list != 'undefined'){
+         let argumentList = elementSelector[i].dataset.list.split('|');
+         for(let j = 0; j < argumentList.length; j++){
+            elementSelector[i].children[j].textContent = argumentList[j];
+         }
+      }
+   }
+}
