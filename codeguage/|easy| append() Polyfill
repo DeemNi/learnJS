@@ -1,0 +1,13 @@
+Element.prototype.append = function() {
+
+   let fragment = document.createDocumentFragment();
+
+   for (var i = 0; i < arguments.length; i++) {
+      if (arguments[i] instanceof Node) {
+         fragment.appendChild(arguments[i]);
+      }else{
+         fragment.appendChild(document.createTextNode(arguments[i]));
+      }
+   }
+   this.appendChild(fragment);
+}
