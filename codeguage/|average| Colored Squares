@@ -1,0 +1,30 @@
+function randomentor(iteration){
+
+   function getRandomColor(){
+      let colorNumber = Math.floor(Math.random() * 255) + 1;
+
+      if(String(colorNumber).length == 1){
+         return "00" + colorNumber;
+      }else if(String(colorNumber).length == 2){
+         return "0" + colorNumber;
+      }else return colorNumber;
+   }
+
+   function getRandomSize(start, end){
+      return start + Math.floor(Math.random() * (end - start + 1));
+   }
+
+
+   for(let i = 0; i < iteration; i++){
+      let width = getRandomSize(50, 100);
+
+      let squarePrototype = document.createElement('div');
+      squarePrototype.classList += "square";
+      
+      squarePrototype.style.height = squarePrototype.style.width = getRandomSize(50, 100) + "px";
+      squarePrototype.style.left = getRandomSize(0, innerWidth - width) + 'px';
+      squarePrototype.style.backgroundColor = "#" + getRandomColor();
+      
+      document.body.append(squarePrototype);
+   }
+}
