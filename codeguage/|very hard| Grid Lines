@@ -1,0 +1,143 @@
+JS---
+function createGrid(inElement, distance = 10, isBold = false){
+   
+      if(!(inElement instanceof Element)){
+         throw new TypeError("U need to include element type to funtion argue");
+      }else if( distance < 5 || distance > 100){
+         throw new TypeError("Range 5 - 100, not lower and not highter");
+      }else if(!typeof isBold == "boolean"){
+         throw new TypeError("True of false");
+      }
+
+      let bold = isBold ? 2 : 1;
+
+      let clientRect = inElement.getBoundingClientRect();
+      let verticalPosition = distance;
+
+      while( verticalPosition < clientRect.height){
+         let vrLine = document.createElement('div');
+
+         if(verticalPosition % 5 == 0){
+            vrLine.classList.add("verticalLine1", "line");
+            vrLine.style.left = verticalPosition + "px";
+            vrLine.style.width = bold + "px";
+
+            inElement.append(vrLine); 
+         }
+
+         vrLine.classList.add("verticalLine", "line");
+         vrLine.style.left = verticalPosition + "px";
+         vrLine.style.width = bold + "px";
+  
+         inElement.append(vrLine);   
+         verticalPosition += distance;
+      }
+
+      let horisontalPosition = distance;
+
+      while( horisontalPosition < clientRect.width){
+         let hzLine = document.createElement('div');
+
+         if(horisontalPosition % 5 == 0){
+            hzLine.classList.add("horizontalLine1", "line");
+            hzLine.style.top = horisontalPosition + "px";
+            hzLine.style.height = bold + "px";
+
+            inElement.append(hzLine); 
+            
+         }
+
+         hzLine.classList.add("horizontalLine", "line");
+         hzLine.style.top = horisontalPosition + "px";
+         hzLine.style.height = bold + "px";
+
+         inElement.append(hzLine);  
+         horisontalPosition += distance;
+      }
+
+      let middleLinePosition = (clientRect.top + clientRect.bottom) / 2;
+
+      let middleLine = document.createElement('div');
+      middleLine.classList.add("verticalLine", "line", "middleLineV");
+      middleLine.style.left = middleLinePosition + "px";
+      middleLine.style.width = bold + "px";
+      inElement.append(middleLine);
+
+
+      middleLine = document.createElement('div');
+      middleLine.classList.add("horizontalLine", "line", "middleLineH");
+      middleLine.style.top = middleLinePosition + "px";
+      middleLine.style.height = bold + "px";
+      inElement.append(middleLine);
+
+
+   }
+
+createGrid(document.querySelector("#d1"), 8, true);
+
+CSS---
+*{
+    margin: 0;
+}
+
+#d1 {
+    background-color: #f1f1f1;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+    height: 300px;
+ }
+
+ .line{
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: #ddd;
+ }
+
+ .horizontalLine{
+    width: 100%;
+ }
+
+ .verticalLine{
+    height: 100%;
+ }
+
+ .verticalLine1{
+    height: 100%;
+    background-color: #aaa;
+ }
+
+ .horizontalLine1{
+    width: 100%;
+    background-color: #aaa;
+ }
+
+ .middleLineV{
+    background-color: black;
+    height: 100%;
+ }
+ .middleLineH{
+    background-color: black;
+    width: 100%;
+ }
+ 
+ HTML---
+ <!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Learning the11 D1OM</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   
+   <div id="d1"></div>
+
+   <div id="vertical-line"></div>
+
+   <script src="options.js"></script>
+
+</body>
+</html>
