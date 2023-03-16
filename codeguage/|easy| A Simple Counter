@@ -1,0 +1,49 @@
+//js
+
+let counter = document.querySelector("#numberic > h1");
+
+function add(obj){
+   return +obj.textContent + 1;
+}
+
+function minus(obj){
+   if(obj.textContent == 0){
+      return 0;
+   }else return +obj.textContent - 1;
+   
+}
+
+document.querySelector("#add").addEventListener('click', function() { 
+   counter.textContent = add(counter);
+});
+
+document.querySelector("#minus").addEventListener('click', function() { 
+   counter.textContent = minus(counter);   
+});
+
+document.querySelector("#reset").addEventListener('click', function() { 
+   counter.textContent = 0;
+});
+
+
+//html
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Learning the11 D1OM</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <div id="numberic"><h1>0</h1></div>
+
+   <button id="add">+1</button>
+   <button id="minus">-1</button>
+   <button id="reset">RESET</button>
+   
+   <script src="options.js"></script>
+
+</body>
+</html>
