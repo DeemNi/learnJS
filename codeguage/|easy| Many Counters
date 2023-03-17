@@ -1,0 +1,60 @@
+class Counter{
+   constructor(position = document.body){
+
+      this.count = 0;
+      
+      let mainBlock = document.createElement("div");
+
+      let displayCount = document.createElement("h1");
+      displayCount.setAttribute("id", "mainDisplay")
+      displayCount.style.marginLeft = 25 + "px";
+      displayCount.textContent = 0;
+      mainBlock.appendChild(displayCount);
+
+      let plusButton = document.createElement("button");
+      plusButton.setAttribute("id", "plus")
+      plusButton.textContent = "+";
+      plusButton.onclick = this.increaseCounter.bind(this);
+      mainBlock.appendChild(plusButton);
+           
+      let minusButton = document.createElement("button");
+      minusButton.setAttribute("id", "minus")
+      minusButton.textContent = "-";
+      minusButton.onclick = this.decreaseCouter.bind(this);
+      mainBlock.appendChild(minusButton);
+
+      let resetButton = document.createElement("button");
+      resetButton.setAttribute("id", "reset")
+      resetButton.textContent = "R";
+      resetButton.onclick = this.resetCouter.bind(this);
+      mainBlock.appendChild(resetButton);
+      
+      
+      position.appendChild(mainBlock);
+
+   }
+
+   increaseCounter(){
+
+      let incCount = document.getElementById("mainDisplay");
+
+      incCount.textContent = +incCount.textContent + 1;
+
+   };
+
+   decreaseCouter(){
+      let decCount = document.getElementById("mainDisplay");
+      
+      if(decCount.textContent > 0){
+         decCount.textContent = +decCount.textContent - 1;
+      }
+     
+   };
+
+   resetCouter(){
+      let resetCount = document.getElementById("mainDisplay");
+
+      resetCount.textContent = 0;
+   };
+
+}
