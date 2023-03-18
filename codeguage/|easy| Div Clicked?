@@ -1,0 +1,9 @@
+function divLighter(){
+   let divFinder = document.querySelectorAll("div");
+
+   for(let i = 0; i < divFinder.length; i++){
+      divFinder[i].onclick = function(){
+         console.log("DIV");
+      }
+   }
+}
