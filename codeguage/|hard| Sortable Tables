@@ -1,0 +1,102 @@
+var languages = [
+   {'Name': 'Java', 'Release Date': 1995, 'File Extension': '.java', 'Creator': 'James Gosling'},
+   {'Name': 'PHP', 'Release Date': 1995, 'File Extension': '.php', 'Creator': 'Rasmus Lerdorf'},
+   {'Name': 'C', 'Release Date': 1972, 'File Extension': '.c', 'Creator': 'Dennis Ritchie'},
+   {'Name': 'C++', 'Release Date': 1985, 'File Extension': '.cpp', 'Creator': 'Bjarne Stroustrup'},
+   {'Name': 'JavaScript', 'Release Date': 1995, 'File Extension': '.js', 'Creator': 'Brendan Eich'}
+];
+
+class SortableTable{
+   constructor(data, insertPosition = document.body){
+      this.data = data;
+
+      let tableElement = document.createElement("table");
+      
+      for(let i = 0; i < Object.keys(data[0]).length; i++){
+         let tHead = document.createElement("th");
+         tHead.classList.add("headerT");
+
+         tHead.innerHTML = Object.keys(data[0])[i];
+         
+         tableElement.append(tHead);
+      }
+
+      let arrayKeys = Object.keys(data[0]);
+
+      for(let i = 0; i < data.length; i++){
+         let trRow = document.createElement("tr");
+
+         for(let j = 0; j < arrayKeys.length; j++){
+            let tdRow = document.createElement("td");
+            tdRow.classList.add(arrayKeys[j].replace(/ /g,''));
+
+            tdRow.innerHTML = data[i][arrayKeys[j]];
+
+            trRow.append(tdRow);
+         }
+
+         tableElement.append(trRow);
+      }
+
+      insertPosition.append(tableElement);
+      this.globalSort();
+   }
+   
+   globalSort(sortChanger = 0){
+
+      for(let i = 0; i < document.querySelectorAll('table > th').length; i++){
+         document.querySelectorAll('.headerT')[i].addEventListener('click', function(e){
+            let sortedArray = [];
+            let clicedOption;
+            if(e.target.innerHTML.match(/▴/g) || e.target.innerHTML.match(/▾/g)){
+               clicedOption = document.getElementsByClassName(e.target.innerHTML.replace(/ /g,'').slice(0, e.target.innerHTML.replace(/ /g,'').length - 1));
+            }else{ clicedOption = document.getElementsByClassName(e.target.innerHTML.replace(/ /g,'')); }
+
+            for(let i = 0; i < clicedOption.length; i++){
+               sortedArray.push(clicedOption[i].innerHTML);
+            }
+
+            // if = 0 - sort up, else = 1 - sort down
+            if(sortChanger == 0){
+               sortedArray.sort();
+               if(e.target.innerHTML.match(/▾/g)){
+                  let changer = e.target.innerHTML.replace(/▾/g,"▴");
+                  e.target.innerHTML = changer;
+                  
+               }else if(!e.target.innerHTML.match(/▴/g)){
+                  e.target.innerHTML += "▴";
+               }
+               
+               sortChanger = 1;
+
+            }else if(sortChanger == 1){
+               sortedArray.sort((a, b) => (a < b) ? 1 : (a > b) ? -1 : 0);
+
+               if(!e.target.innerHTML.match(/▾/g)){
+                  let changer = e.target.innerHTML.replace(/▴/g,"▾");
+                  e.target.innerHTML = changer;
+               }
+
+               sortChanger = 2;
+            }else if(sortChanger == 2){
+               if(e.target.innerHTML.match(/▾/g)){
+                  let changer = e.target.innerHTML.replace(/▾/g,"");
+                  e.target.innerHTML = changer;
+               }
+               sortChanger = 0;
+            }
+
+            for(let i = 0; i < clicedOption.length; i++){
+               let classRow = document.getElementsByClassName(e.target.innerHTML.replace(/ /g,'').slice(0, e.target.innerHTML.replace(/ /g,'').length - 1));
+
+               classRow[i].innerHTML = sortedArray[i];
+            }
+         })
+      }
+
+   }
+}
+
+let boba = new SortableTable(languages);
+
+
