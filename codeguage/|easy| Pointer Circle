@@ -1,0 +1,29 @@
+   var circleElement = document.createElement('div');
+
+   circleElement.style.height = 25 + 'px';
+   circleElement.style.width = 25 + 'px';
+   circleElement.style.borderRadius = 50 + "%";
+
+   circleElement.style.position = "fixed";
+
+window.addEventListener('mousedown', function(e){
+   e.preventDefault();
+
+   if(e.button === 2){
+      circleElement.style.backgroundColor = "orange"
+   }
+   circleElement.style.display = 'block';
+});
+
+window.addEventListener('mousemove', function(e){
+   circleElement.style.left = `${e.clientX}px`;
+   circleElement.style.top = `${e.clientY}px`; 
+});
+
+window.addEventListener('mouseup', function(e){
+   circleElement.style.backgroundColor = 'paleturquoise';
+   circleElement.style.display = 'none';
+})
+
+
+document.body.append(circleElement);
