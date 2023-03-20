@@ -97,6 +97,6 @@ class SortableTable{
    }
 }
 
-let boba = new SortableTable(languages);
+
 
 
