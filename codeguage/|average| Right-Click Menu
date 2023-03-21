@@ -1,0 +1,59 @@
+function createMenuElement(){
+   let menuElement = document.createElement('div');
+
+   menuElement.style.width = `${200}px`;
+   menuElement.style.height = `${300}px`;
+
+   menuElement.style.backgroundColor = "red";
+   menuElement.style.position = "fixed";
+
+   let childElement = document.createElement('h1');
+   childElement.innerHTML = "funtion 1";
+
+   menuElement.appendChild(childElement);
+
+
+    document.body.append(menuElement);
+    return menuElement;
+}
+
+
+window.addEventListener('contextmenu', function(e){
+   e.preventDefault();
+
+   let menuer = createMenuElement();
+
+   var menuWidth = menuer.offsetWidth;
+   var menuHeight = menuer.offsetHeight;
+   var clientX = e.clientX;
+   var clientY = e.clientY;
+
+   var left = clientX + 1;
+   if (left + menuWidth > innerWidth) {
+      left = innerWidth - menuWidth;
+   }
+
+   var top = clientY + 1;
+   if (top + menuHeight > innerHeight) {
+      top = innerHeight - menuHeight;
+   }
+
+   menuer.style.left = `${left}px`;
+   menuer.style.top = `${top}px`;
+
+   menuer.addEventListener("mousedown", function(e){
+   if(e.button === 0){
+         e.stopPropagation();
+      }
+   });
+
+   window.addEventListener('mouseup', function(e){
+      if(e.button === 2){
+         menuer.parentElement.removeChild(menuer);
+      }
+   });
+   window.addEventListener("mousedown", function(e){
+      menuer.parentElement.removeChild(menuer);
+   });
+
+});
