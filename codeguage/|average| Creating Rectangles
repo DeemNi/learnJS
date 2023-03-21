@@ -1,0 +1,60 @@
+var rectangleElement;
+var initX, initY;
+
+window.addEventListener('mousedown', function(e){
+   rectangleElement = drawRectangle();
+
+   initX = e.clientX;
+   initY = e.clientY;
+
+   window.addEventListener('mousemove', moveDrawedElement);
+   window.addEventListener('mouseup', deleteListeners)
+});
+
+function drawRectangle(){
+   var rectangleElement = document.createElement('div');
+
+   rectangleElement.style.position = 'fixed';
+   rectangleElement.style.backgroundColor = "#666";
+
+   document.body.append(rectangleElement);
+
+   return rectangleElement;
+}
+
+function moveDrawedElement(e) {
+   var clientX = e.clientX;
+   var clientY = e.clientY;
+
+   var left, right, top, bottom;
+
+   // Dealing with left and right edges.
+   if (clientX > initX) {
+      left = initX;
+      right = innerWidth - clientX;
+   }
+   else {
+      right = innerWidth - initX;
+      left = clientX;
+   }
+
+   // Dealing with top and bottom edges.
+   if (clientY > initY) {
+      top = initY;
+      bottom = innerHeight - clientY;
+   }
+   else {
+      bottom = innerHeight - initY;
+      top = clientY;
+   }
+
+   rectangleElement.style.left = `${left}px`;
+   rectangleElement.style.right = `${right}px`;
+   rectangleElement.style.top = `${top}px`;
+   rectangleElement.style.bottom = `${bottom}px`;
+}
+
+function deleteListeners(){
+   window.removeEventListener('mousemove', moveDrawedElement);
+   window.removeEventListener('mouseup', deleteListeners);
+}
