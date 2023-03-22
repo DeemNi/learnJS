@@ -1,0 +1,11 @@
+function bringInView(targetNode){
+   let coordinates = targetNode.getBoundingClientRect();
+   var distance = window.pageYOffset + coordinates.top + coordinates.height - window.innerHeight;
+
+   let butt = document.createElement('button');
+   butt.innerHTML = "get Down";
+   butt.onclick = function(){
+      document.documentElement.scrollTop += distance;
+   }
+   document.body.append(butt);
+}
