@@ -1,0 +1,7 @@
+function intoView(){
+      if(window.pageYOffset >= 327){
+         window.removeEventListener("scroll", intoView);
+         alert("on window");
+      }
+}
+window.addEventListener("scroll", intoView);
