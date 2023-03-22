@@ -1,0 +1,42 @@
+//JS
+
+let tabber = document.getElementById('tab');
+
+function setFixed(){
+   if(window.pageYOffset > 8){
+      tabber.classList.add("fixed");
+      tabber.style.left = 0;
+   } else tabber.classList.remove("fixed");
+}
+
+window.addEventListener('scroll', setFixed);
+
+
+//HTML
+
+   <!-- --- -->
+
+   <div id="tab-cont">
+      <!--Fix the following #tab div-->
+      <p>Some content....</p>
+      <div id="tab">Tab</div>
+      <p>Some more content.....</p>
+  </div>
+
+   <!-- --- -->
+   
+   //css
+   
+#tab {
+    background-color: #bbb;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+body{
+    height: 2500px;
+}
