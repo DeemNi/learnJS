@@ -1,0 +1,38 @@
+var targetElement;
+let pointerState = ['move','copy','link','none'];
+
+function setDndListeners(){
+
+   var divElemnt = document.querySelector('div');
+
+   divElemnt.ondragstart = function(e) { targetElement = e.target; }
+   divElemnt.ondragend = function(e) { targetElement = null; }
+
+   for(let i = 0; i < pointerState.length; i++){
+      let searchTargetElement = document.querySelector('#' + pointerState[i]);
+
+      if(searchTargetElement){
+         searchTargetElement.addEventListener(`dragover`, function(e){
+            e.dataTransfer.dropEffect = pointerState[i];
+            e.preventDefault();
+         });
+
+         if(pointerState[i] == 'move'){
+            searchTargetElement.addEventListener('drop', function(e){
+               this.appendChild(targetElement);
+            });
+         }
+         if(pointerState[i] == 'copy'){
+            searchTargetElement.addEventListener('drop', function(e){
+               let cloneNode_ = targetElement.cloneNode();
+               this.appendChild(cloneNode_);
+               this.innerHTML = targetElement.outerHTML;
+            });
+         }
+      }
+   }
+}
+
+
+
+setDndListeners();
