@@ -1,0 +1,12 @@
+var aList = document.querySelectorAll('a');
+
+ function haldA(e) {
+    let href = e.target.getAttribute('href');
+
+       e.dataTransfer.setData('text/uri-list', href);
+       e.dataTransfer.setData('text/plain', "text:" + e.target.innerText +` url(${href})`);
+ }
+
+ aList.forEach(function(){
+    aList.addEventListener('dragstart', haldA);
+ })
