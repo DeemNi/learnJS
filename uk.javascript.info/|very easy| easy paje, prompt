@@ -1,0 +1,3 @@
+let quester = prompt('enter your name', '');
+
+alert(quester);
