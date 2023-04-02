@@ -1,0 +1,13 @@
+//need to repair
+
+// let a = prompt("Перше число?", 1);
+// let b = prompt("Друге число?", 2);
+
+// alert(a + b); // 12
+
+//use "before prompt or Number() into declaration or alert function"
+
+let a = +prompt("Перше число?", 1);
+let b = +prompt("Друге число?", 2);
+
+alert(a + b);
