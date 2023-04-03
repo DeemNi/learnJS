@@ -1,0 +1,7 @@
+let text = prompt('official name of javaScript?', "");
+
+if(text == 'ECMAScript'){
+    alert('true');
+}else{
+    alert('false');
+}
