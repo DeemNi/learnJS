@@ -1,0 +1,13 @@
+let message;
+
+// if (login == 'Працівник') {
+//   message = 'Привіт';
+// } else if (login == 'Директор') {
+//   message = 'Вітаю';
+// } else if (login == '') {
+//   message = 'Немає логіну';
+// } else {
+//   message = '';
+// }
+
+let result = (message == 'Працівник') ? 'Привіт': (message == 'Директор') ? 'Вітаю':(message == '') ? 'Немає логіну': '';
