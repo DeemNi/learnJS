@@ -1,0 +1,7 @@
+let p1 = prompt("Enter your age", 0);
+
+if(p1 <= 90 && p1 >= 14){
+    alert(`Your age are ${p1}`);
+} else {
+    alert('bad age');
+}
